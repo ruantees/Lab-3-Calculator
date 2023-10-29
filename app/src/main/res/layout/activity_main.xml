@@ -45,7 +45,8 @@
             style="@style/buttonNumber"
             android:text="@string/all_clear"
             android:textColor="#ff0000"
-            android:onClick="allClearAction"/>
+            android:onClick="allClearAction"
+            tools:ignore="VisualLintButtonSize" />
         <Button
             style="@style/buttonNumber"
             android:text="@string/backspace"
@@ -67,7 +68,8 @@
             android:text="@string/_1"/>
         <Button
             style="@style/buttonNumber"
-            android:text="@string/_2"/>
+            android:text="@string/_2"
+            tools:ignore="VisualLintButtonSize" />
         <Button
             style="@style/buttonNumber"
             android:text="@string/_3"/>
@@ -86,9 +88,11 @@
         <Button
             style="@style/buttonNumber"
             android:text="@string/_6"/>
+
         <Button
             style="@style/buttonOperation"
-            android:text="@string/multiply"/>
+            android:text="@string/multiply"
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
     <LinearLayout style="@style/buttonRow">
