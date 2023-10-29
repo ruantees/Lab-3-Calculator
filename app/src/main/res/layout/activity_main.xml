@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:lines="2"
             android:maxLines="2"
-            android:text="TextView"
             android:textAlignment="textEnd"
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@id/resultsTV"
@@ -33,7 +32,6 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:maxLines="1"
-            android:text="View"
             android:textAlignment="textEnd"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -117,7 +115,6 @@
             style="@style/buttonNumber"
             android:text="="
             android:layout_weight="2"
-            android:textColor="#ffa000"
             android:onClick="equalsAction"/>
     </LinearLayout>
 
