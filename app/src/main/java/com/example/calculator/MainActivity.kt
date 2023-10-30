@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultsTV: TextView
     private var canAddOperation = false
     private var canAddDecimal = true
+    private var canAddFunction = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 workingsTV.append(view.text)
             }
             canAddOperation = true
+            canAddFunction = false
         }
     }
     fun operationAction(view: View) {
@@ -40,16 +42,32 @@ class MainActivity : AppCompatActivity() {
             workingsTV.append(view.text)
             canAddOperation = false
             canAddDecimal = true
+            canAddFunction = true
+        }
+    }
+
+    fun functionAction(view: View) {
+        if (view is Button && canAddFunction) {
+            workingsTV.append(view.text)
+            canAddOperation = false
+            canAddFunction = false
         }
     }
     fun allClearAction(view: View) {
         workingsTV.text = ""
         resultsTV.text = ""
+        canAddOperation = false
+        canAddFunction = true
     }
     fun backSpaceAction(view: View) {
         val length = workingsTV.length()
         if(length > 0) {
             workingsTV.text = workingsTV.text.subSequence(0, length-1)
+        }
+    }
+    fun signChange(view:View) {
+        if (resultsTV.text != "") {
+            resultsTV.text = "-" + resultsTV.text
         }
     }
     fun equalsAction(view: View) {

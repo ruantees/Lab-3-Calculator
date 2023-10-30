@@ -1,5 +1,8 @@
 package com.example.calculator
 
+import android.util.Log
+import kotlin.math.sqrt
+
 class Calculations {
     companion object {
         fun calculateResults(workingsText: CharSequence): String {
@@ -8,7 +11,13 @@ class Calculations {
                 return ""
             }
 
-            val timesDivision = timesDivisionCalculate(digitsOperators)
+            Log.d("res", "initializing sqrt")
+            val squareRoot = squareRootCalculate(digitsOperators)
+            if (squareRoot.isEmpty()) {
+                return ""
+            }
+
+            val timesDivision = timesDivisionCalculate(squareRoot)
             if (timesDivision.isEmpty()) {
                 return ""
             }
@@ -81,6 +90,42 @@ class Calculations {
             return newList
         }
 
+        private fun squareRootCalculate(passedList: MutableList<Any>): MutableList<Any> {
+            var list = passedList
+            while (list.contains('√')) {
+                list = calcSquareRoot(list)
+            }
+            return list
+        }
+
+        private fun calcSquareRoot(passedList: MutableList<Any>): MutableList<Any> {
+            val newList = mutableListOf<Any>()
+            var restartIndex = passedList.size
+
+            for (i in passedList.indices) {
+                if (passedList[i] is Char && i != passedList.lastIndex && i < restartIndex) {
+                    val operator = passedList[i]
+
+                    when (operator) {
+                        '√' -> {
+                            newList.add(sqrt(passedList[i + 1] as Float))
+                            restartIndex = i + 1
+                        }
+
+                        else -> {
+                            newList.add(passedList[i - 1] as Float)
+                            newList.add(operator)
+                        }
+                    }
+                }
+
+                if (i > restartIndex) {
+                    newList.add(passedList[i])
+                }
+            }
+            return newList
+        }
+
         private fun digitsOperators(workingsText: CharSequence): MutableList<Any> {
             val list = mutableListOf<Any>()
             var currentDigit = ""
@@ -90,8 +135,10 @@ class Calculations {
                     currentDigit += character
                 }
                 else {
-                    list.add(currentDigit.toFloat())
-                    currentDigit = ""
+                    if (currentDigit != "") {
+                        list.add(currentDigit.toFloat())
+                        currentDigit = ""
+                    }
                     list.add(character)
                 }
             }
@@ -99,7 +146,6 @@ class Calculations {
             if(currentDigit != "") {
                 list.add(currentDigit.toFloat())
             }
-
             return list
         }
     }

@@ -45,18 +45,15 @@
             style="@style/buttonNumber"
             android:text="@string/all_clear"
             android:textColor="#ff0000"
-            android:onClick="allClearAction"
-            tools:ignore="VisualLintButtonSize" />
+            android:onClick="allClearAction"/>
         <Button
             style="@style/buttonNumber"
             android:text="@string/backspace"
             android:textColor="#ff0000"
             android:onClick="backSpaceAction"/>
-
         <Button
-            style="@style/buttonNumber"
-            android:text=""
-            tools:ignore="SpeakableTextPresentCheck" />
+            style="@style/buttonFunction"
+            android:text="@string/sqrt" />
         <Button
             style="@style/buttonOperation"
             android:text="@string/plus"/>
@@ -68,8 +65,7 @@
             android:text="@string/_1"/>
         <Button
             style="@style/buttonNumber"
-            android:text="@string/_2"
-            tools:ignore="VisualLintButtonSize" />
+            android:text="@string/_2" />
         <Button
             style="@style/buttonNumber"
             android:text="@string/_3"/>
@@ -88,11 +84,9 @@
         <Button
             style="@style/buttonNumber"
             android:text="@string/_6"/>
-
         <Button
             style="@style/buttonOperation"
-            android:text="@string/multiply"
-            tools:ignore="TextContrastCheck" />
+            android:text="@string/multiply"/>
     </LinearLayout>
 
     <LinearLayout style="@style/buttonRow">
@@ -112,15 +106,18 @@
 
     <LinearLayout style="@style/buttonRow">
         <Button
-            style="@style/buttonNumber"
-            android:text="@string/dec_dot"/>
+            style="@style/buttonOperation"
+            android:text="@string/sign_change"
+            android:onClick="signChange"/>
         <Button
             style="@style/buttonNumber"
             android:text="@string/_0"/>
         <Button
             style="@style/buttonNumber"
+            android:text="@string/dec_dot"/>
+        <Button
+            style="@style/buttonOperation"
             android:text="@string/equals"
-            android:layout_weight="2"
             android:onClick="equalsAction"/>
     </LinearLayout>
 

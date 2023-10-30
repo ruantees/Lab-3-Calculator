@@ -18,4 +18,6 @@
     <string name="dec_dot">.</string>
     <string name="_0">0</string>
     <string name="equals">=</string>
+    <string name="sign_change">±</string>
+    <string name="sqrt">√</string>
 </resources>
